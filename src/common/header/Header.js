@@ -1,11 +1,15 @@
 import { Button } from '@material-ui/core';
 import React,{Component} from 'react';
-import './Header.js';
+import './Header.css';
 
 class Header extends Component{
     render(){
         return(
-            <Button variant='contained'>Login</Button>
+            <header className='header-container'>
+             <div >
+              <Button variant='contained'>Login</Button>
+             </div>
+            </header>
         )
     }
 }
