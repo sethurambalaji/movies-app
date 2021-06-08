@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './screens/home/Home';
 import './common/header/Header';
 import Header from './common/header/Header';
+import 'typeface-roboto';
 
 ReactDOM.render(
   <React.StrictMode>
