@@ -21,3 +21,14 @@ Button{
 .tabs{
     padding-bottom: 20px;
 }
+
+.dispNone{
+    display: none;
+}
+.redError{
+    color: red;
+}
+
+.dispBlock{
+    display: block;
+}
