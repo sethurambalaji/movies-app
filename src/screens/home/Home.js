@@ -1,8 +1,11 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import './Home.css';
 import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
-import moviesData from '../../common/movieData'
+import moviesData from '../../common/movieData';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 
 const styles = theme => ({
     root: {
@@ -20,19 +23,31 @@ const styles = theme => ({
         transform: 'translateZ(0)',
         width: '100%'
     }
- });
+});
 
- 
-class Home extends Component{
 
-    render(){
-        const {classes} = this.props
-        return(
+class Home extends Component {
+
+    render() {
+        const { classes } = this.props
+        return (
             <div>
-                <Header/>
+                <Header />
                 <div className={classes.upcomingMoviesHeading}>
                     <span>Upcoming Movies</span>
                 </div>
+                <GridList cols={5} className={classes.gridListUpcomingMovies}>
+                    {
+                        moviesData.map(movie => (
+                            <GridListTile key={movie.id} alt={movie.title}
+                                className="-webkit-scrollbar-thumb">
+                                <img src={movie.poster_url}></img>
+                                <GridListTileBar title={movie.title} />
+                            </GridListTile>
+
+                        ))
+                    }
+                </GridList>
             </div>
         );
     }
