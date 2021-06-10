@@ -22,7 +22,18 @@ const styles = theme => ({
         flexWrap: 'nowrap',
         transform: 'translateZ(0)',
         width: '100%'
-    }
+    },
+    gridListReleasedMovies: {
+        transform: 'translateZ(0)',
+        cursor: 'pointer',
+        width:'60%'
+        
+      },
+      gridListReleasedMoviesTile:{
+         
+      }  
+     
+      
 });
 
 
@@ -39,15 +50,28 @@ class Home extends Component {
                 <GridList cols={5} className={classes.gridListUpcomingMovies}>
                     {
                         moviesData.map(movie => (
-                            <GridListTile key={movie.id} alt={movie.title}
-                                className="-webkit-scrollbar-thumb">
-                                <img src={movie.poster_url}></img>
+                            <GridListTile key={movie.id} alt={movie.title}>
+                                <img src={movie.poster_url} alt={movie.title}></img>
                                 <GridListTileBar title={movie.title} />
                             </GridListTile>
 
                         ))
                     }
-                </GridList>
+                </GridList><br/><br/>
+
+                <GridList cols={3} spacing={30} cellHeight={350} className={classes.gridListReleasedMovies}>
+                    {
+                        moviesData.map(movie => (
+                           <GridListTile key={movie.id} alt={movie.title} 
+                             className={classes.gridListReleasedMoviesTile}>
+                             <img src={movie.poster_url} alt={movie.title}/>
+                             <GridListTileBar title={movie.title}
+                                 subtitle={<span>Release Date: {new Date(movie.release_date).toDateString()}</span>}>
+                             </GridListTileBar>    
+                           </GridListTile>
+                        ) )
+                    }
+                </GridList>    
             </div>
         );
     }
