@@ -15,7 +15,30 @@
   ::-webkit-scrollbar-thumb:hover {
     background: grey;
   }
+  
+ .left{
+     width:70%;
+     display: inline-flex;
+ }
 
- 
-
- 
+ .right{
+    padding-top: 20px;
+    width: 25%;
+    float: right;
+    padding-right: 20px;
+ }
+/* 
+ @media (max-width: 992px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .left {
+        width: 100%;
+    }
+    .right {
+        width: 90%;
+    }
+    .gridListReleasedMovies {
+        margin: 8px;
+    }
+} */
