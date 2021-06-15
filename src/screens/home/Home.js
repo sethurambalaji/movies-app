@@ -16,6 +16,7 @@ import { Input, InputLabel, MenuItem, Select } from '@material-ui/core';
 import Checkbox from '@material-ui/core/Checkbox';
 import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     root: {
@@ -31,14 +32,14 @@ const styles = theme => ({
     gridListUpcomingMovies: {
         flexWrap: 'nowrap',
         transform: 'translateZ(0)',
-        width: '100%',        
+        width: '100%',
     },
     gridListReleasedMovies: {
         transform: 'translateZ(0)',
         cursor: 'pointer',
-        width: '75%'
-
+        width: '75%',
     },
+
     formControl: {
         margin: theme.spacing(1),
         minWidth: 240,
@@ -47,7 +48,6 @@ const styles = theme => ({
     title: {
         color: theme.palette.primary.light,
     }
-
 
 });
 
@@ -168,13 +168,29 @@ class Home extends Component {
                                 </FormControl>
 
                                 <FormControl className={classes.formControl}>
-                                        <TextField 
+                                    <TextField
                                         id="releaseDateStart"
                                         label="Release Date Start"
                                         type="date"
                                         defaultValue=""
-                                        InputLabelProps={{shrink:true}}/>
-                                </FormControl>    
+                                        InputLabelProps={{ shrink: true }} />
+                                </FormControl>
+
+                                <FormControl className={classes.formControl}>
+                                    <TextField
+                                        id="releaseDateEnd"
+                                        label="Release Date End"
+                                        type="date"
+                                        defaultValue=""
+                                        InputLabelProps={{ shrink: true }} />
+                                </FormControl><br/><br/>
+                                <div className="applyButton">
+                                <Button variant='contained' color='primary'
+                                    style={{ textAlign: 'center' }}
+                                    onClick={this.movieFilterValidationHandler}
+                                    id="applyButton"
+                                >Apply</Button>
+                                </div>
 
                             </CardContent>
                         </Card>

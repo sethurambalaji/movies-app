@@ -27,6 +27,12 @@
     float: right;
     padding-right: 20px;
  }
+ .gridListUpcomingMovies > GridListTileBar {
+   height: unset;
+ }
+ .applyButton{
+   display: grid;
+ }
 
 /* 
  @media (max-width: 992px) {
