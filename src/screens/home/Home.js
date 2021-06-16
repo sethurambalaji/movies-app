@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './Home.css';
+import Details from '../details/Details';
 import Header from '../../common/header/Header';
 import { withStyles } from '@material-ui/core/styles';
 import moviesData from '../../common/movieData';
@@ -33,11 +35,15 @@ const styles = theme => ({
         flexWrap: 'nowrap',
         transform: 'translateZ(0)',
         width: '100%',
+        '& li' : {
+            minHeight:'350px',
+        }
     },
-    gridListReleasedMovies: {
+    
+      gridListReleasedMovies: {
         transform: 'translateZ(0)',
         cursor: 'pointer',
-        width: '75%',
+        width: '100%',
     },
 
     formControl: {
@@ -72,9 +78,13 @@ class Home extends Component {
         this.setState({ genres: e.target.value })
     }
 
-    // artistSelectHandler = (e) => {
-    //     this.setState({ artists: e.target.value })
-    // }
+    artistSelectHandler = (e) => {
+        this.setState({ artists: e.target.value })
+    }
+
+    movieClickHandler = (movieId) => {
+        ReactDOM.render(<Details movieId = {movieId}/>,document.getElementById("root"));
+    } 
 
     render() {
         const { classes } = this.props
@@ -88,11 +98,11 @@ class Home extends Component {
                     <GridList cols={5} className={classes.gridListUpcomingMovies}>
                         {
                             moviesData.map(movie => (
-                                <GridListTile key={movie.id} alt={movie.title}>
+                                 <GridListTile key={movie.id} alt={movie.title}>
                                     <img src={movie.poster_url} alt={movie.title}></img>
                                     <GridListTileBar title={movie.title} />
-                                </GridListTile>
-
+                                 </GridListTile>
+                                
                             ))
                         }
                     </GridList><br /><br />
@@ -101,7 +111,8 @@ class Home extends Component {
                             {
                                 moviesData.map(movie => (
                                     <GridListTile key={movie.id} alt={movie.title}
-                                        className='released-movie-grid-item'>
+                                        className='released-movie-grid-item'
+                                        onClick={()=> this.movieClickHandler(movie.id)}>
                                         <img src={movie.poster_url} alt={movie.title} />
                                         <GridListTileBar title={movie.title}
                                             subtitle={<span>Release Date: {new Date(movie.release_date).toDateString()}</span>}>
